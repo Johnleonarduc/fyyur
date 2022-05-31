@@ -55,4 +55,38 @@
       <input type="submit" value="Create Artist" class="btn btn-primary btn-lg btn-block">
     </form>
   </div>
+  <!-- <script>
+    document.querySelector("input[type='submit']").addEventListener('click',(e)=>{
+
+      let genreArrFunc = (select_tag)=>{
+        let genArr = [];
+        let genre;
+
+        for (let i=0; i<select_tag.length; i++) {
+          genre = select_tag[i];
+
+          if (genre.selected) {
+            genArr.push(genre.value);
+          }
+        }
+        return genArr;
+      };
+      
+      data = {
+        name: document.querySelector("#name").value,
+        city: document.querySelector("#city").value,
+        state: document.querySelector("#state").value,
+        phone: document.querySelector("#phone").value,
+        genre: genreArrFunc(document.getElementsByTagName('select')[1]),
+        facebook_link: document.querySelector("#facebook_link").value,
+        image_link: document.querySelector("#image_link").value,
+        website_link: document.querySelector("#website_link").value,
+        seeking_venue: document.querySelector("#seeking_venue").checked,
+        seeking_description: document.querySelector("#seeking_description").value,
+      };
+      console.log(JSON.stringify(data));
+
+      e.preventDefault();
+    } )
+  </script> -->
 {% endblock %}
