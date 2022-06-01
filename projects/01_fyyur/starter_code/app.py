@@ -274,12 +274,36 @@ def artists():
   data = Artist.query.order_by(Artist.id.asc()).all()
   return render_template('pages/artists.html', artists=data)
 
-@app.route('/artists/search', methods=['POST']) #TODO
+@app.route('/artists/search', methods=['POST']) #COMPLETED
 def search_artists():
-  # TODO: implement search on artists with partial string search. Ensure it is case-insensitive.
+  # implement search on artists with partial string search. Ensure it is case-insensitive.
   # seach for "A" should return "Guns N Petals", "Matt Quevado", and "The Wild Sax Band".
   # search for "band" should return "The Wild Sax Band".
+  search_term = request.form.get('search_term', '')
+  db_search_results = Artist.query.filter(Artist.name.ilike('%' + search_term + '%')).all()
+  artists = Artist.query.all()
+
+  def count_upcoming_shows():
+    up_shows =[]
+    for artist in artists:
+      for show in artist.shows:
+        if show.start_time > datetime.now():
+          up_shows.append(show)
+    return len(up_shows)
+
+  def get_search_result_data():
+    data = []
+    for search_result in db_search_results:
+      data.append({
+        'id': search_result.id,
+        'name': search_result.name,
+        'num_upcoming_shows': count_upcoming_shows()
+      })
+    return data
+
   response={
+    'count': len(db_search_results),
+    'data': get_search_result_data()
   }
   return render_template('pages/search_artists.html', results=response, search_term=request.form.get('search_term', ''))
 
