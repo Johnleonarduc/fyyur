@@ -226,7 +226,7 @@ def delete_venue(venue_id):
   #Handle cases where the session commit could fail.
   except:
     db.session.rollback()
-    flash('Venue ' + venue_to_delete.name + ' was not successful!')
+    flash('Venue ' + venue_to_delete.name + ' was not successfully Deleted!')
   finally:
     db.session.close()
   # BONUS CHALLENGE: Implemented a button to delete a Venue on a Venue Page, have it so that
