@@ -46,7 +46,9 @@ app.jinja_env.filters['datetime'] = format_datetime
 
 @app.route('/')
 def index():
-  return render_template('pages/home.html')
+  recent_artists = Artist.query.order_by(Artist.date_listed.desc()).limit(5)
+  recent_venues = Venue.query.order_by(Venue.date_listed.desc()).limit(5)
+  return render_template('pages/home.html', artist_listings = recent_artists, venue_listings = recent_venues)
 
 #  Venues
 #  ----------------------------------------------------------------
@@ -183,7 +185,7 @@ def create_venue_form():
 
 @app.route('/venues/create', methods=['POST']) #COMPLETED
 def create_venue_submission():
-  # TODO: insert form data as a new Venue record in the db, instead
+  # insert form data as a new Venue record in the db, instead
   ven_form = VenueForm(request.form)
   try:
     venue = Venue(
@@ -197,7 +199,8 @@ def create_venue_submission():
       facebook_link = ven_form.facebook_link.data,
       seeking_talent = ven_form.seeking_talent.data,
       website_link = ven_form.website_link.data,
-      seeking_description = ven_form.seeking_description.data
+      seeking_description = ven_form.seeking_description.data,
+      date_listed = datetime.now()
     )
     db.session.add(venue)
     db.session.commit()
@@ -211,7 +214,7 @@ def create_venue_submission():
   finally:
     db.session.close()
 
-    return render_template('pages/home.html')
+    return redirect(url_for('index'))
 
 @app.route('/venues/<venue_id>/delete') #COMPLETED
 def delete_venue(venue_id):
@@ -429,7 +432,8 @@ def create_artist_submission():
       facebook_link = artist_form.facebook_link.data,
       seeking_venue = artist_form.seeking_venue.data,
       website_link = artist_form.website_link.data,
-      seeking_description = artist_form.seeking_description.data
+      seeking_description = artist_form.seeking_description.data,
+      date_listed = datetime.now()
     )
     db.session.add(artist)
     db.session.commit()
@@ -441,7 +445,8 @@ def create_artist_submission():
     flash('An error occurred. Artist ' + request.form['name'] + ' could not be listed.')
   finally:
     db.session.close()
-    return render_template('pages/home.html')
+
+    return redirect(url_for('index'))
 
 #  Shows
 #  ----------------------------------------------------------------

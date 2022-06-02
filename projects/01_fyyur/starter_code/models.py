@@ -21,6 +21,7 @@ class Venue(db.Model): #COMPLETED
     website_link = db.Column(db.String(120))
     seeking_talent = db.Column(db.Boolean())
     seeking_description = db.Column(db.String(550))
+    date_listed = db.Column(db.DateTime, nullable=False)
     shows = db.relationship('Show', backref='venue', lazy=True, cascade='all, delete')
 
 class Artist(db.Model): #COMPLETED
@@ -37,6 +38,7 @@ class Artist(db.Model): #COMPLETED
     website_link = db.Column(db.String(120))
     seeking_venue = db.Column(db.Boolean())
     seeking_description = db.Column(db.String(550))
+    date_listed = db.Column(db.DateTime, nullable=False)
     shows = db.relationship('Show', backref='artist', lazy=True, cascade='all, delete')
 
 class Show(db.Model): #COMPLETED
