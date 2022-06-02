@@ -6,6 +6,9 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 # Enable debug mode.
 DEBUG = True
 
+# Stop SQLAlchemy warnings on console
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+
 # Connect to the database
 
 
