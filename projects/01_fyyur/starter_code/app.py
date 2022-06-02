@@ -360,14 +360,14 @@ def show_artist(artist_id):
     "upcoming_shows_count": get_upcoming_count()
   }
   return render_template('pages/show_artist.html', artist=data)
-
+  
 #  Update
 #  ----------------------------------------------------------------
-@app.route('/artists/<int:artist_id>/edit', methods=['GET']) #TODO
+@app.route('/artists/<int:artist_id>/edit', methods=['GET']) #COMPLETED
 def edit_artist(artist_id):
-  form = ArtistForm()
-  artist={ }
-  # TODO: populate form with fields from artist with ID <artist_id>
+  # Populate form with fields from artist with ID <artist_id>
+  artist = Artist.query.filter(Artist.id == artist_id).first()
+  form = ArtistForm(obj = artist)
   return render_template('forms/edit_artist.html', form=form, artist=artist)
 
 @app.route('/artists/<int:artist_id>/edit', methods=['POST']) #TODO
@@ -377,11 +377,11 @@ def edit_artist_submission(artist_id):
 
   return redirect(url_for('show_artist', artist_id=artist_id))
 
-@app.route('/venues/<int:venue_id>/edit', methods=['GET']) #TODO
+@app.route('/venues/<int:venue_id>/edit', methods=['GET']) #COMPLETED
 def edit_venue(venue_id):
-  form = VenueForm()
-  venue={}
-  # TODO: populate form with values from venue with ID <venue_id>
+  # Populate form with values from venue with ID <venue_id>
+  venue = Venue.query.filter(Venue.id == venue_id).first()
+  form = VenueForm(obj = venue)
   return render_template('forms/edit_venue.html', form=form, venue=venue)
 
 @app.route('/venues/<int:venue_id>/edit', methods=['POST']) #TODO
