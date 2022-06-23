@@ -1,0 +1,9 @@
+babel
+flask
+flask-migrate
+flask-moment
+flask-sqlalchemy
+flask-wtf
+psycopg2-binary
+wtforms
+python-dateutil
