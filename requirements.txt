@@ -4,6 +4,7 @@ Flask-Migrate
 Flask-Moment
 Flask-SQLAlchemy
 Flask-WTF
+gunicorn
 psycopg2-binary
 WTForms
 python-dateutil
