@@ -77,7 +77,7 @@ pip install -r requirements.txt
 - Set your environment variables or update the config file to reflect your database configurations
 
 5. **Run Migrations:**
-Since the migrations have already been created, running the upgrade command, creates the necessary feild in the database
+Since the migrations have already been created, running the upgrade command, creates the necessary feilds in the database
 ```
 flask upgrade
 ```
@@ -87,6 +87,12 @@ flask upgrade
 export FLASK_APP=myapp
 export FLASK_ENV=development # enables debug mode
 python3 app.py
+```
+
+or
+
+```
+flask run
 ```
 
 6. **Verify on the Browser**<br>
