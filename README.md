@@ -4,6 +4,7 @@
 
 Fyyur is a musical venue and artist booking site designed to facilitate the discovery and booking of shows between local performing artists and venues. This platform allows users to list new artists and venues, discover them, and create shows with artists as venue owners. In this project, we have established the data models to power the API endpoints for Fyyur by connecting to a PostgreSQL database for storing, querying, and managing information about artists and venues on the platform.
 
+To view platform click here: https://fyyur-wrmd.onrender.com/
 ## Overview
 
 Fyyur is a fully functioning site capable of the following using a PostgreSQL database:
