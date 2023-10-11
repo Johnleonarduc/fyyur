@@ -1,0 +1,9 @@
+babel
+Flask
+Flask-Migrate
+Flask-Moment
+Flask-SQLAlchemy
+Flask-WTF
+psycopg2-binary
+WTForms
+python-dateutil
