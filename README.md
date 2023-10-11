@@ -32,12 +32,11 @@ Fyyur aims to be the next platform that artists and musical venues can use to fi
 
   ```sh
   ├── README.md
-  ├── app.py *** the main driver of the app. Includes your SQLAlchemy models.
-                    "python app.py" to run after installing dependencies
-  ├── config.py *** Database URLs, CSRF generation, etc
+  ├── app.py
+  ├── config.py
   ├── error.log
-  ├── forms.py *** Your forms
-  ├── requirements.txt *** The dependencies we need to install with "pip3 install -r requirements.txt"
+  ├── forms.py
+  ├── requirements.txt
   ├── static
   │   ├── css 
   │   ├── font
