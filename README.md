@@ -1,4 +1,4 @@
-# Fyyur - A Musical Venue and Artist Booking Platform
+# Fyyur - A Musical Venue and Artist Booking Platform (Practice Project - no auth)
 
 ## Introduction
 
